@@ -24,7 +24,7 @@ export function ListStations({stations}) {
                 </thead>
                 <tbody>
                     {stations.map(station => <tr key={station.stationId}>
-                        <td id="clickable" value={station.stationId} onClick={(e) => { setSingleStation(e.target.getAttribute('value'))}} id="clickable">{station.name}</td>
+                        <td id="clickable" value={station.stationId} onClick={(e) => { setSingleStation(e.target.getAttribute('value'))}}> {station.name}</td>
                         <td>{station.city}</td>
                         <td>{station.address}</td>
                         </tr>)}
