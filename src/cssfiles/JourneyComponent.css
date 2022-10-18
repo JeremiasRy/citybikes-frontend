@@ -15,3 +15,8 @@
 #clickable:hover {
     background-color: rgb(230, 136, 13);
 }
+
+.PaginationButtons {
+    display: flex;
+    justify-content: space-between;
+}

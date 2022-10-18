@@ -46,7 +46,7 @@ function App() {
         <Route path="/stations/list" element={<ListStations stations={stations}/>} />
         <Route path="/stations/add" element={<AddStation />} />
         <Route path="/stations/search" element={<SearchStations/>} />
-        <Route path="/stations/:id" element={<SingleStationView />}/>
+        <Route path="/stations/:id" element={<SingleStationView stations={stations}/>}/>
       </Routes>
     </div>
     </Router>

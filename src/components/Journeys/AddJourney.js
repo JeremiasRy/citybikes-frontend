@@ -1,5 +1,5 @@
 export function AddJourney() {
     return (
-        <>Journeys adding functions</>
+        <div className="JourneyComponent">Not implemented yet...</div>
     )
 }

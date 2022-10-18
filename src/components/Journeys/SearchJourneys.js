@@ -1,5 +1,5 @@
 export function SearchJourneys() {
     return (
-        <>search funnctionality journeys</>
+        <div className="JourneyComponent">Not implemented yet...</div>
     )
 }
