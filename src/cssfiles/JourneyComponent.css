@@ -1,0 +1,17 @@
+.JourneyComponent {
+    top: 50px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+    position: relative;
+    display: table;
+}
+.JourneyComponent h1 {
+    color: black;
+}
+#clickable {
+    cursor: pointer;
+}
+#clickable:hover {
+    background-color: rgb(230, 136, 13);
+}
