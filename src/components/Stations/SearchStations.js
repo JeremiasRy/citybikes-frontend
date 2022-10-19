@@ -1,5 +1,5 @@
-export function SearchStations() {
-    return (
-        <>Station searching functions</>
-    )
+export function SearchStations () {
+  return (
+    <>Station searching functions</>
+  )
 }
