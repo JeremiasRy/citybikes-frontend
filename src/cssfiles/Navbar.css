@@ -26,7 +26,7 @@
     background-color: rgb(61, 1, 1);
     border-radius: 6px;
   }
-  h1 {
+  h1#HeaderText {
     left: 50px;
     color: whitesmoke;
     position: relative;

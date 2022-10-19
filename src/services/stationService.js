@@ -20,12 +20,12 @@ const getStationStatistics = async (id) => {
     return result;
 }
 
-const getAvailableBikes = async (id) => {
+const getStationDataFromHsl = async (id) => {
     var result = await axios.post('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
         id: 'routes_BikeRentalStation_Query', 
         query: 'query routes_BikeRentalStation_Query(\n  $id: String!\n) {\n  bikeRentalStation(id: $id) {\n    ...BikeRentalStationContent_bikeRentalStation\n    id\n  }\n}\n\nfragment BikeRentalStationContent_bikeRentalStation on BikeRentalStation {\n  lat\n  lon\n  name\n  spacesAvailable\n  bikesAvailable\n  capacity\n  networks\n  stationId\n  state\n}\n',
         variables: {id: id.id }})
-    return result.data;
+    return result.data.data.bikeRentalStation;
 }
 
-export default { getStations, getStationStatistics, getAvailableBikes }
+export default { getStations, getStationStatistics, getStationDataFromHsl }

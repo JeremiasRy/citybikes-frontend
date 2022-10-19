@@ -37,17 +37,19 @@ function App() {
     <Router>
     <div className="App">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/journeys/list" element={<ListJourneys stations={stations} journeys={journeys} setJourneys={setJourneys}/>}/>
-        <Route path="/journeys/search" element={<SearchJourneys />}/>
-        <Route path="/journeys/add" element={<AddJourney />}/>
+      <div className='Components'>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/journeys/list" element={<ListJourneys stations={stations} journeys={journeys} setJourneys={setJourneys}/>}/>
+          <Route path="/journeys/search" element={<SearchJourneys />}/>
+          <Route path="/journeys/add" element={<AddJourney />}/>
 
-        <Route path="/stations/list" element={<ListStations stations={stations}/>} />
-        <Route path="/stations/add" element={<AddStation />} />
-        <Route path="/stations/search" element={<SearchStations/>} />
-        <Route path="/stations/:id" element={<SingleStationView stations={stations}/>}/>
-      </Routes>
+          <Route path="/stations/list" element={<ListStations stations={stations}/>} />
+          <Route path="/stations/add" element={<AddStation />} />
+          <Route path="/stations/search" element={<SearchStations/>} />
+          <Route path="/stations/:id" element={<SingleStationView stations={stations}/>}/>
+        </Routes>
+      </div>
     </div>
     </Router>
   );

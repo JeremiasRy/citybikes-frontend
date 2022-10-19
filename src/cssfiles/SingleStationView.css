@@ -4,16 +4,48 @@
     -webkit-transform: translate(-50%, 0%);
     transform: translate(-50%, 0%);
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
 }
 h1 {
     color: black;
 }
 
+.table {
+    width: 90%;
+}
+.CapacityOut{
+    margin-top: 50px;
+    position: relative;
+    left: 50px;
+    width: 400px;
+    border: 1px black solid;
+    height: 24px;
+    background-color: brown;
+}
+.CapacityIndicator {
+    background-color: rgb(52, 165, 42);
+}
 #clickable {
     cursor: pointer;
 }
 #clickable:hover {
     background-color: rgb(230, 136, 13);
+}
+.statisticsBasic {
+    margin-left: 50px;
+    position: absolute;
+    display: table;
+    top: 150%;
+}
+.topLists {
+    position: relative;
+    top: 50px;
+    display: flex;
+    flex-direction: row;
+}
+.topLists div {
+    margin: 5px 5px 5px 50px;
+}
+
+#statsTopList {
+    width: 200px
 }
