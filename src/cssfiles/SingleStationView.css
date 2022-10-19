@@ -1,27 +1,41 @@
 .SingleStationView {
     top: 50px;
-    left: 50%;
-    -webkit-transform: translate(-50%, 0%);
-    transform: translate(-50%, 0%);
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+    justify-content: space-between;
 }
 h1 {
     color: black;
 }
-
+.Details {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+}
+.Details div {
+    margin-bottom: 20px;
+}
 .table {
     width: 90%;
 }
+
+.MapHolder {
+    margin-right: 40px;
+    width: 800px;
+    height: 400px;
+    box-shadow: 0px 2px 5px 5px black ;
+}
 .CapacityOut{
-    margin-top: 50px;
     position: relative;
-    left: 50px;
-    width: 400px;
+    width: 300px;
     border: 1px black solid;
     height: 24px;
     background-color: brown;
 }
 .CapacityIndicator {
+    position: relative;
     background-color: rgb(52, 165, 42);
 }
 #clickable {
@@ -40,7 +54,7 @@ h1 {
     position: relative;
     top: 50px;
     display: flex;
-    flex-direction: row;
+    flex-wrap: nowrap;
 }
 .topLists div {
     margin: 5px 5px 5px 50px;

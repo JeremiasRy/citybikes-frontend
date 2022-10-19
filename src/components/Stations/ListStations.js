@@ -1,13 +1,12 @@
 import { Table, Button } from "react-bootstrap"
 import '../../cssfiles/StationComponent.css'
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export function ListStations({stations}) {
-
-    const [singleStation, setSingleStation] = useState(null);
     const [pageIndex, setPageIndex] = useState(1);
     const [pageSize, setPageSize] = useState(50);
+    const navigate = useNavigate();
 
     const ChangePage = (amount) => {
         var integerAmount = parseInt(amount)
@@ -24,7 +23,6 @@ export function ListStations({stations}) {
 
     return (
         <div className="StationComponent">
-            {singleStation !== null && <Navigate to={`/stations/${singleStation}`} />}
             <h1>List of all available stations</h1>
             <p>Click on station name to view details</p>
             <div className="PaginationButtons">
@@ -37,14 +35,12 @@ export function ListStations({stations}) {
                     <tr>
                         <th>Name</th>
                         <th>City</th>
-                        <th>Address</th>
                     </tr>
                 </thead>
                 <tbody>
                     {stations.slice(pageSize * pageIndex - pageSize, pageSize * pageIndex).map(station => <tr key={station.stationId}>
-                        <td id="clickable" value={station.stationId} onClick={(e) => { setSingleStation(e.target.getAttribute('value'))}}> {station.name}</td>
+                        <td id="clickable" value={station.stationId} onClick={() => {navigate(`/stations/${station.stationId}`)}}> {station.name}</td>
                         <td>{station.city}</td>
-                        <td>{station.address}</td>
                         </tr>)}
                 </tbody>
             </Table>
