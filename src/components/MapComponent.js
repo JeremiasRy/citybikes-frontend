@@ -13,7 +13,7 @@ export function MapComponent({center, containerStyle}) {
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
     setMap(map)
-  }, [])
+  }, [center])
 
   const onUnmount = useCallback(function callback(map) {
     setMap(null)
