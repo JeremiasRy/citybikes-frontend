@@ -12,10 +12,8 @@ export function ListJourneys({stations, journeys, setJourneys}) {
     const [orderBy, setOrderBy] = useState(null);
     const [pageIndex, setPageIndex] = useState(1);
     const [pageSize, setPageSize] = useState(50);
-    const [initialLoad, setInitialLoad] = useState(true)
 
     const SetOrderParams = (event) => {
-        setInitialLoad(false);
         if (orderDirection === "a") {
             setOrderDirection("d")
         } else if (orderDirection === "d") {
@@ -30,7 +28,6 @@ export function ListJourneys({stations, journeys, setJourneys}) {
     }
 
     const ChangePage = (amount) => {
-        setInitialLoad(false);
         var integerAmount = parseInt(amount)
         if (pageIndex + integerAmount <= 0) {
             return;
@@ -45,30 +42,25 @@ export function ListJourneys({stations, journeys, setJourneys}) {
     }
 
     useEffect(() => {
-        if (initialLoad) {
-            return;
-        }
-        async function OrderBy() {
-            var params = new URLSearchParams([["orderDirection", orderDirection], ["orderBy", orderBy]])
-            var res = await journeyService.getJourneys(orderBy === "none" ? undefined :params);
-            setJourneys(res);
-        } OrderBy()}, [orderBy, orderDirection])
+        async function ParamsChange() {
+            var params = new URLSearchParams();
 
-    useEffect(() => {
-        if (initialLoad) {
-            return;
-        }
-        async function ChangePage() {
-                var params = new URLSearchParams([["pageIndex", pageIndex], ["pageSize", pageSize]])
-                if (orderBy !== "none") {
-                    params.append("orderBy", orderBy)
-                }
-                if (orderDirection !== null) {
-                    params.append("orderDirection", orderDirection)
-                }
-                var res = await journeyService.getJourneys(params);
-                setJourneys(res);
-            } ChangePage()}, [pageIndex, pageSize])
+            if (orderBy !== "none") {
+                params.append("orderBy", orderBy)
+            }
+            if (orderDirection !== null) {
+                params.append("orderDirection", orderDirection)
+            }
+            if (pageIndex !== null) {
+                params.append("pageIndex", pageIndex)
+            }
+            if (pageSize !== null) {
+                params.append("pageSize", pageSize)
+            }
+            var res = await journeyService.getJourneys(params);
+            setJourneys(res);
+        } ParamsChange()}, [orderBy, orderDirection, pageIndex, pageSize])
+
 
     return (
         <div className="JourneyComponent">
@@ -76,7 +68,7 @@ export function ListJourneys({stations, journeys, setJourneys}) {
         <p>Click on columns to order. Journeys are ordered by default from oldest to newest. {orderBy !== null && <Button onClick={ResetPage}>Default</Button>}</p>
         <div className="PaginationButtons">
             <Button value={-1} onClick={(event) => {ChangePage(event.target.getAttribute('value'))}}>Back</Button> 
-            {pageIndex} 
+            <>Page {pageIndex}</> 
             <Button value={1} onClick={(event) => {ChangePage(event.target.getAttribute('value'))}}>Next</Button>
         </div>
         <Table striped bordered hover>
