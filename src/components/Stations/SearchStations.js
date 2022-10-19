@@ -1,5 +1,5 @@
 export function SearchStations () {
   return (
-    <>Station searching functions</>
+    <div className="StationComponent">Station searching functions</div>
   )
 }

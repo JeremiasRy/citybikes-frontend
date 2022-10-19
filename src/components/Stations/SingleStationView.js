@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
-import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import '../../cssfiles/SingleStationView.css'
 import stationService from '../../services/stationService'
+import { MapComponent } from '../MapComponent'
 
 function statisticsParsed (stats) {
   const statistics = [
@@ -35,8 +36,20 @@ export function SingleStationView ({ stations }) {
     return
   }
 
+
+
   const capacityPercent = Math.floor(station.bikesAvailable / station.capacity * 100)
   const parsedStats = statisticsParsed(statistics.statistics)
+
+  const center = { 
+    lat: station.lat, 
+    lng: station.lon
+}
+  const containerStyle = {
+    height: '400px',
+    width: '800px'
+  };
+
 
   const Top5Table = ({ table, header }) => {
     return (
@@ -82,7 +95,9 @@ export function SingleStationView ({ stations }) {
         <Top5Table table={statistics.top5Departures} header='Top 5 Departures returning here' />
         <Top5Table table={statistics.top5Returs} header='Top 5 Return stations departuring here' />
       </div>
-      <div className='MapHolder' />
+      <div className='MapHolder' > 
+      <MapComponent center={center} containerStyle={containerStyle}/>
+      </div>
       <div className='statisticsBasic'>
         <Table striped bordered hover>
           <thead>

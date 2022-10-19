@@ -37,10 +37,11 @@ export function ListStations ({ stations }) {
           </tr>
         </thead>
         <tbody>
-          {stations.slice(pageSize * pageIndex - pageSize, pageSize * pageIndex).map(station => <tr key={station.stationId}>
+          {stations.slice(pageSize * pageIndex - pageSize, pageSize * pageIndex).map(station => 
+          <tr key={station.stationId}>
             <td id='clickable' value={station.stationId} onClick={() => { navigate(`/stations/${station.stationId}`) }}> {station.name}</td>
             <td>{station.city}</td>
-                                                                                                </tr>)}
+            </tr>)}
         </tbody>
       </Table>
     </div>
